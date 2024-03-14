@@ -12,6 +12,7 @@ def drawSymbolImage(code, font_path, size, k=0.2):
     :param size: int, размер фона
     :param k: коэффициент базовой линии
     :return: кортеж с именем файла и изображением
+
     """
     symbol = chr(code)
     font_size = size - 2
