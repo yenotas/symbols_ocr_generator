@@ -106,6 +106,8 @@ all_codes = symbols.values()
 cover_size = 32
 path_to_fonts = 'test_font'
 output_dir = 'png_symbols'
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
 
 fonts = [(os.path.join(path_to_fonts, font), font.split('.')[-2]) for font in os.listdir(path_to_fonts)]
 for font_path, font_name in fonts:
