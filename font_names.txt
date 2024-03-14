@@ -1,0 +1,145 @@
+Arial
+Arial Bold
+Arial Bold Italic
+Arial Italic
+Arial Unicode MS
+Arimo Bold
+Arimo Bold Italic
+Arimo Italic
+Arimo
+Bahnschrift
+Calibri
+Calibri Bold
+Calibri Italic
+Calibri Light
+Calibri Light Italic
+Calibri Bold Italic
+Cambria Bold
+Cambria Italic
+Cambria Bold Italic
+Carlito Bold
+Carlito Bold Italic
+Carlito Italic
+Carlito
+Consolas
+Consolas Bold
+Consolas Italic
+Consolas Bold Italic
+Courier New
+Courier New Bold
+Courier New Bold Italic
+Courier New Italic
+Cousine Bold
+Cousine Bold Italic
+Cousine Italic
+Cousine
+DejaVu Sans Bold
+DejaVu Sans Bold Oblique
+DejaVu Sans Oblique
+DejaVu Sans
+DejaVu Sans Condensed Bold
+DejaVu Sans Condensed Bold Oblique
+DejaVu Sans Condensed Oblique
+DejaVu Sans Condensed
+DejaVu Sans Mono Bold
+DejaVu Sans Mono Bold Oblique
+DejaVu Sans Mono Oblique
+DejaVu Sans Mono
+DejaVu Serif Bold
+DejaVu Serif Bold Italic
+DejaVu Serif Italic
+DejaVu Serif
+DejaVu Serif Condensed Bold
+DejaVu Serif Condensed Bold Italic
+DejaVu Serif Condensed Italic
+DejaVu Serif Condensed
+Microsoft Sans Serif
+MS Mincho
+Noto Mono
+Noto Sans Bold
+Noto Sans Bold Italic
+Noto Sans Italic
+Noto Sans Regular
+Noto Sans Display Bold
+Noto Sans Display Bold Italic
+Noto Sans Display Italic
+Noto Sans Display Regular
+Noto Sans Mono Bold
+Noto Sans Mono Regular
+Noto Serif Bold
+Noto Serif Bold Italic
+Noto Serif Italic
+Noto Serif Regular
+Noto Serif Display Bold
+Noto Serif Display Bold Italic
+Noto Serif Display Italic
+Noto Serif Display Regular
+Palatino Linotype
+Palatino Linotype Bold
+Palatino Linotype Bold Italic
+Palatino Linotype Italic
+PT Astra Fact Bold
+PT Astra Fact Bold Italic
+PT Astra Fact Italic
+PT Astra Fact
+PT Astra Sans Bold
+PT Astra Sans Bold Italic
+PT Astra Sans Italic
+PT Astra Sans
+PT Astra Serif Bold
+PT Astra Serif Bold Italic
+PT Astra Serif Italic
+PT Astra Serif Regular
+PT Mono
+PT Mono Bold
+PT Root UI Bold
+PT Root UI Light
+PT Root UI Medium
+PT Root UI
+Roboto Black
+Roboto Black Italic
+Roboto Bold
+Roboto Bold Italic
+Roboto Italic
+Roboto Light
+Roboto Light Italic
+Roboto Medium
+Roboto Medium Italic
+Roboto
+Roboto Thin
+Roboto Thin Italic
+Roboto Condensed Bold
+Roboto Condensed Bold Italic
+Roboto Condensed Italic
+Roboto Condensed Light
+Roboto Condensed Light Italic
+Roboto Condensed Medium
+Roboto Condensed Medium Italic
+Roboto Condensed
+Segoe UI
+Segoe UI Negreta
+Segoe UI Cursiva
+Segoe UI Light
+Segoe UI Semilight
+Segoe UI Negreta cursiva
+Segoe UI Black
+Segoe UI Black Italic
+Segoe UI Light Italic
+Segoe UI Semibold
+Segoe UI Semibold Italic
+Segoe UI Semilight Italic
+Segoe UI Variable
+Tahoma
+Tahoma Negreta
+Times New Roman
+Times New Roman Bold
+Times New Roman Bold Italic
+Times New Roman Italic
+Tinos Bold
+Tinos Bold Italic
+Tinos Italic
+Tinos
+Verdana
+Verdana Bold
+Verdana Italic
+Verdana Bold Italic
