@@ -8,13 +8,9 @@ import numpy as np
 from PIL import Image as PilImage, ImageFont, ImageDraw
 from symbols import symbols
 import os
-
+from config import path_to_fonts, output_dir, cover_size
 
 all_codes = symbols.values()
-cover_size = 28
-# path_to_fonts = 'test_font'
-path_to_fonts = 'arh_all_fonts'
-output_dir = 'png_symbols'
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
@@ -161,7 +157,3 @@ def ciclicGenerateClearSymbolImages():
             for file_name, glyph_img in drawSymbolImage(code, font_path, cover_size):
                 png_filename = os.path.join(target_folder, file_name)
                 glyph_img.save(png_filename)
-
-
-img = generateOneSymbolImage(1065)
-img.show()
