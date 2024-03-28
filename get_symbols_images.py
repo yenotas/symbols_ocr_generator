@@ -1,3 +1,6 @@
+import sys
+sys.path.append('/content/symbols_ocr_generator')
+
 import random
 
 from fontTools.ttLib import TTFont
