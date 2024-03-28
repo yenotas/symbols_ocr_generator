@@ -1,14 +1,20 @@
+import io
+import cairosvg
 from fontTools.ttLib import TTFont
+from PIL import Image
 from fontTools.pens.svgPathPen import SVGPathPen
 import os
 from symbols import symbols
-import matplotlib.pyplot as plt
-import matplotlib.path as mpath
-import matplotlib.transforms as mtransforms
+
 
 """
 читает папку шрифтов и создает папки с svg каждого символа
 """
+
+
+def getImageFromSVG(svg_code, size):
+    png_bytes = cairosvg.svg2png(bytestring=svg_code.encode('utf-8'), output_width=size, output_height=size)
+    return Image.open(io.BytesIO(png_bytes))
 
 
 def extractVariousGlyphs(font_file, unicode_val):
@@ -58,15 +64,18 @@ if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
 font_files = [(os.path.join(path_to_fonts, font), font.split('.')[-2]) for font in os.listdir(path_to_fonts)]
-code = 1049  # for code in all_codes:
+# for code in all_codes:
 # saveGlyphSVG(code, output_dir, font_files)
-target_folder = os.path.join(output_dir, str(code))
-if not os.path.exists(target_folder):
-    os.makedirs(target_folder)
+
 font_path, font_name = font_files[100]
 print('======================================\n', font_name, '\n======================================')
-for code in [1049, 113, 95, 1025]:
+for code in [1025]:
+    target_folder = os.path.join(output_dir, str(code))
+    if not os.path.exists(target_folder):
+        os.makedirs(target_folder)
     svg, _ = extractVariousGlyphs(font_path, code)
+    img = getImageFromSVG(svg, 28)
+    img.show()
     svg_filename = os.path.join(target_folder, f"{font_name}_{code}.svg")
     with open(svg_filename, 'w', encoding='utf-8') as svg_file:
         svg_file.write(svg)

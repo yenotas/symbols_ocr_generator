@@ -1,8 +1,57 @@
+import random
+
 from fontTools.ttLib import TTFont
 import numpy as np
 from PIL import Image as PilImage, ImageFont, ImageDraw
 from symbols import symbols
 import os
+
+
+all_codes = symbols.values()
+cover_size = 28
+# path_to_fonts = 'test_font'
+path_to_fonts = 'arh_all_fonts'
+output_dir = 'png_symbols'
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+
+fonts = [(os.path.join(path_to_fonts, font), font.split('.')[-2]) for font in os.listdir(path_to_fonts)]
+
+
+def generateOneSymbolImage(code):
+    """
+    Отрисовка случайно сдвинутого, масштабированного, повернутого, символа
+    в квадрате стороной size со случайным шумом
+    :param code: int, код символа в unicode
+    :return: Image
+    """
+    symbol = chr(code)
+
+    angle = -random.randint(0,50)/10
+    noise_power = random.randint(0,50)
+    font_path, _ = random.choice(fonts)
+    print(font_path)
+    is_empty = True
+    while is_empty:
+        dx = random.randint(-4, 4)
+        dy = random.randint(-4, 4)
+        font_size = cover_size - random.randint(0, 4)
+        font = ImageFont.truetype(font_path, size=font_size)
+        symbol_img = PilImage.new('L', (cover_size, cover_size), color=0)
+        imgDraw = ImageDraw.Draw(symbol_img)
+        symbol_w, text_height = imgDraw.textbbox((0, 0), symbol, font=font)[2:4]
+
+        canvas = PilImage.new('L', (cover_size, cover_size), color=0)
+
+        x = (cover_size - symbol_w) // 2 + dx
+        y = (cover_size - text_height) // 2 + dy
+        imgDraw = ImageDraw.Draw(canvas)
+        imgDraw.text((x, y), symbol, fill=255, font=font)
+
+        img_array = np.array(canvas)
+        is_empty = np.all(img_array == 0)
+        if not is_empty:
+            return canvas
 
 
 def drawSymbolImage(code, font_path, size, k=0.2):
@@ -22,7 +71,6 @@ def drawSymbolImage(code, font_path, size, k=0.2):
     imgDraw = ImageDraw.Draw(symbol_img)
     symbol_w, text_height = imgDraw.textbbox((0, 0), symbol, font=font)[2:4]
 
-    # symbol_w, min_h, max_h, symbol_img = drawText(symbol, font_path, size)
     symbols_arr = []
     for dx in range(-3, 4):
         for dy in range(-3, 4):
@@ -33,15 +81,14 @@ def drawSymbolImage(code, font_path, size, k=0.2):
             y = (size - text_height) // 2 + dy  # + size * k
             imgDraw = ImageDraw.Draw(canvas)
             imgDraw.text((x, y), symbol, fill=255, font=font)
-            # canvas.paste(symbol_img, (x, dy), symbol_img)
 
             img_array = np.array(canvas)
             is_empty = np.all(img_array == 0)
             if is_empty:
                 continue
 
-            filename_without_extension = os.path.splitext(os.path.basename(font_path))[0]
-            filename = f"{filename_without_extension}_{str(code)}_{dx}_{dy}.png"
+            filename = os.path.splitext(os.path.basename(font_path))[0]
+            filename = f"{filename}_{str(code)}_{dx}_{dy}.png"
             symbols_arr.append((filename, canvas))
 
     return symbols_arr
@@ -101,31 +148,17 @@ def getFontNamesAndPaths(directory):
     return font_names
 
 
-
-all_codes = symbols.values()
-cover_size = 32
-path_to_fonts = 'test_font'
-output_dir = 'png_symbols'
-if not os.path.exists(output_dir):
-    os.makedirs(output_dir)
-
-fonts = [(os.path.join(path_to_fonts, font), font.split('.')[-2]) for font in os.listdir(path_to_fonts)]
-for font_path, font_name in fonts:
-    print('======================================\n', font_name, '\n======================================')
-    target_folder = os.path.join(output_dir, font_name)
-    if not os.path.exists(target_folder):
-        os.makedirs(target_folder)
-
-    for code in symbols.values():
-        for (file_name, glyph_img) in drawSymbolImage(code, font_path, cover_size):
-            png_filename = os.path.join(target_folder, file_name)
-            glyph_img.save(png_filename)
+def ciclicGenerateClearSymbolImages():
+    for symbol, code in symbols.items():
+        target_folder = os.path.join(output_dir, str(code))
+        if not os.path.exists(target_folder):
+            os.makedirs(target_folder)
+        print('======================================\n', code, '\n======================================')
+        for font_path, font_name in fonts:
+            for file_name, glyph_img in drawSymbolImage(code, font_path, cover_size):
+                png_filename = os.path.join(target_folder, file_name)
+                glyph_img.save(png_filename)
 
 
-# fonts = [(os.path.join(path_to_fonts, font), font.split('.')[-2]) for font in os.listdir(path_to_fonts)]
-# for symbol, symbol_num in symbols.items():
-#     target_folder = os.path.join(output_dir, symbol_num)
-#     if not os.path.exists(target_folder):
-#         os.makedirs(target_folder)
-#     print('======================================\n', symbol_num, '\n======================================')
-#     for font_path, font_name in fonts:
+img = generateOneSymbolImage(1065)
+img.show()
